@@ -1,0 +1,19 @@
+.alert {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  position: fixed;
+  top: 2rem;
+  right: 0rem;
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f5c6cb;
+  color: #721c24;
+}

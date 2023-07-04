@@ -1,9 +1,11 @@
+import Alert from "../../components/alert/Alert"
 import axios from "axios";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./register.css";
 import { useHistory } from "react-router";
 
 export default function Register() {
+  const [errMsg, setErrMsg] = useState("");
   const username = useRef();
   const email = useRef();
   const password = useRef();
@@ -13,7 +15,7 @@ export default function Register() {
   const handleClick = async (e) => {
     e.preventDefault();
     if (passwordAgain.current.value !== password.current.value) {
-      passwordAgain.current.setCustomValidity("Passwords don't match!");
+      setErrMsg("Passwords don't match!");
     } else {
       const user = {
         username: username.current.value,
@@ -31,11 +33,12 @@ export default function Register() {
 
   return (
     <div className="login">
+      <Alert msg={errMsg} type="danger" />
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Kyunsocial</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+            Connect with friends and the world around you on Kyunsocial.
           </span>
         </div>
         <div className="loginRight">
@@ -71,7 +74,12 @@ export default function Register() {
             <button className="loginButton" type="submit">
               Sign Up
             </button>
-            <button className="loginRegisterButton">Log into Account</button>
+            <button
+              className="loginRegisterButton"
+              onClick={() => history.push("/login")}
+            >
+              Log into Account
+            </button>
           </form>
         </div>
       </div>

@@ -1,13 +1,22 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router";
 import "./login.css";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
+import Alert from "../../components/alert/Alert";
 
 export default function Login() {
+  const [errMsg, setErrMsg] = useState(undefined);
   const email = useRef();
   const password = useRef();
-  const { isFetching, dispatch } = useContext(AuthContext);
+  const { isFetching, error, dispatch } = useContext(AuthContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    setErrMsg(error)
+  }, [error])
+
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -19,11 +28,12 @@ export default function Login() {
 
   return (
     <div className="login">
+      {error && <Alert msg={errMsg} type="danger" />}
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Kyunsocial</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+            Connect with friends and the world around you on Kyunsocial.
           </span>
         </div>
         <div className="loginRight">
@@ -55,7 +65,9 @@ export default function Login() {
               {isFetching ? (
                 <CircularProgress color="white" size="20px" />
               ) : (
-                "Create a New Account"
+                <div onClick={() => history.push("/register")}>
+                  "Create a New Account"
+                </div>
               )}
             </button>
           </form>

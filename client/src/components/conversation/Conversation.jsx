@@ -23,11 +23,11 @@ export default function Conversation({ currentUser, conversation }) {
   return (
     <div className='conversation'>
       <img
-        src={user.profilePicture ? user.profilePicture : PF + "/person/noAvatar.png"}
+        src={user?.profilePicture ? user.profilePicture : PF + "/person/noAvatar.png"}
         alt=''
         className='conversationImg'
       />
-      <span className='conversationName'>{user.username}</span>
+      <span className='conversationName'>{user?.username ? user.username : "Undefined"}</span>
     </div>
   )
 }

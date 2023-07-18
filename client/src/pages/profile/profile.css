@@ -1,23 +1,23 @@
-.profile{
+.profile {
     display: flex;
 }
 
-.profileRight{
+.profileRight {
     flex: 9;
 }
 
-.profileCover{
+.profileCover {
     height: 320px;
     position: relative;
 }
 
-.profileCoverImg{
+.profileCoverImg {
     width: 100%;
     height: 250px;
     object-fit: cover;
 }
 
-.profileUserImg{
+.profileUserImg {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -30,21 +30,73 @@
     border: 3px solid white;
 }
 
-.profileInfo{
+.profileInfo {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.profileInfoName{
+.profileInfoName {
     font-size: 24px;
 }
 
-.profileInfoDesc{
+.profileInfoDesc {
     font-weight: 300;
 }
 
-.profileRightBottom{
+.editProfileBtn {
+    font-weight: 500;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.editProfileBtn:hover {
+    color: #fff;
+    background-color: #333;
+}
+
+.profileRightBottom {
     display: flex;
+}
+
+/* Editted */
+.editted {
+    display: flex;
+}
+
+.editInputAvatar {
+    height: 40px;
+    weight: 40px;
+}
+
+.editAvatar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editInformation {
+    flex: 1;
+}
+
+.avatarPreview {
+    margin: 2rem;
+    padding: 2rem;
+    border: 1px solid rgb(183, 183, 183);
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(78, 78, 78);
+}
+
+.avatarPreview > img {
+    max-width: 100%;
 }

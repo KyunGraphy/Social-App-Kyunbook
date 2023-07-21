@@ -51,7 +51,7 @@ export default function Profile() {
                 className="profileUserImg"
                 src={
                   user.profilePicture
-                    ? PF + user.profilePicture
+                    ? user.profilePicture.url
                     : PF + "person/noAvatar.png"
                 }
                 alt=""
@@ -69,7 +69,7 @@ export default function Profile() {
             </div>
           </div>
           {isEditedPage ? (<>
-            <Editted user={user} />
+            <Editted user={user} setIsEditedPage={setIsEditedPage} />
           </>) : (
             <div className="profileRightBottom">
               <Feed username={username} />

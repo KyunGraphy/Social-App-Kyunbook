@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const cloudinary = require("../utils/cloudinary")
 
 //update user
 router.put("/:id", async (req, res) => {
@@ -116,6 +117,39 @@ router.put("/:id/unfollow", async (req, res) => {
     }
   } else {
     res.status(403).json("you cant unfollow yourself");
+  }
+});
+
+router.post("/uploadAvatar/:userId", async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.params.userId)
+
+    if (currentUser.profilePicture.public_id !== undefined) {
+      await cloudinary.uploader.destroy(currentUser.profilePicture?.public_id);
+    }
+
+    const result = await cloudinary.uploader.upload(req.body.avatarImg, {
+      folder: "avatar",
+    })
+
+    const newUpdate = await User.findByIdAndUpdate(
+      req.params.userId,
+      {
+        $set: {
+          profilePicture: {
+            public_id: result.public_id,
+            url: result.secure_url
+          }
+        }
+      },
+      { new: true }
+    )
+    res.status(201).json({
+      success: true,
+      newUpdate
+    })
+  } catch (err) {
+    console.log(err)
   }
 });
 

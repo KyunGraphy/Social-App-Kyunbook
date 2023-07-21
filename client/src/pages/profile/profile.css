@@ -88,7 +88,7 @@
 .avatarPreview {
     margin: 2rem;
     padding: 2rem;
-    border: 1px solid rgb(183, 183, 183);
+    border: 3px dashed rgb(183, 183, 183);
     max-width: 300px;
     width: 100%;
     display: flex;
@@ -97,6 +97,21 @@
     color: rgb(78, 78, 78);
 }
 
-.avatarPreview > img {
-    max-width: 100%;
+.avatarPreview > div > img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.updateAvatarButton {
+    color: white;
+    width: 124px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background: #1877f2;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
 }

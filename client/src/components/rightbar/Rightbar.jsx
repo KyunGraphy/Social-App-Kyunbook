@@ -110,7 +110,7 @@ export default function Rightbar({ user }) {
                 <img
                   src={
                     friend.profilePicture
-                      ? PF + friend.profilePicture
+                      ? friend.profilePicture.url
                       : PF + "person/noAvatar.png"
                   }
                   alt=""

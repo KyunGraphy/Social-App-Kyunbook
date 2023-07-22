@@ -7,7 +7,7 @@ export default function Editted({ user, setIsEditedPage }) {
   const [avatarImg, setAvatarImg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useContext(AuthContext)
-
+  console.log(user)
   const handleAvatarImageUpload = (e) => {
     const file = e.target.files[0];
     convertIntoBase64(file);
@@ -38,6 +38,64 @@ export default function Editted({ user, setIsEditedPage }) {
     setIsLoading(false);
   }
 
+  const UpdateProfile = () => {
+    return (
+      <>
+        <div className="profileEditField">
+          <label>User Name: </label>
+          <input
+            className="profileInput"
+            type="text"
+            placeholder={user.username ? user.username : "---"}
+          />
+        </div>
+        <div className="profileEditField">
+          <label>Description: </label>
+          <input
+            className="profileInput"
+            type="text"
+            placeholder={user.desc ? user.desc : "---"}
+          />
+        </div>
+        <div className="profileEditField">
+          <label>City: </label>
+          <input
+            className="profileInput"
+            type="text"
+            placeholder={user.city ? user.city : "---"}
+          />
+        </div>
+        <div className="profileEditField">
+          <label>From: </label>
+          <input
+            className="profileInput"
+            type="text"
+            placeholder={user.from ? user.from : "---"}
+          />
+        </div>
+        <div className="profileEditField">
+          <label>Relationship: </label>
+          <input
+            className="profileInput"
+            type="text"
+            placeholder={user.relationship ? user.relationship : "---"}
+          />
+        </div>
+        <button
+          className='updateProfileButton'
+          onClick={null}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <CircularProgress color="white" size="20px" />
+          ) : (
+            "Update Avatar"
+          )}
+        </button>
+      </>
+    )
+  }
+
   return (
     <div className='editted'>
       <div className='editAvatar'>
@@ -51,6 +109,10 @@ export default function Editted({ user, setIsEditedPage }) {
         <div className='avatarPreview'>
           {avatarImg ? (
             <div>
+              <span
+                onClick={() => setAvatarImg("")}
+                className='resetButton'
+              >X</span>
               <img src={avatarImg} alt="" />
             </div>
           ) : (
@@ -59,7 +121,7 @@ export default function Editted({ user, setIsEditedPage }) {
         </div>
         {avatarImg && (
           <button
-            className='updateAvatarButton'
+            className='updateProfileButton'
             onClick={handleUploadAvatar}
             disabled={isLoading}
           >
@@ -72,7 +134,7 @@ export default function Editted({ user, setIsEditedPage }) {
         )}
       </div>
       <div className='editInformation'>
-
+        <UpdateProfile />
       </div>
     </div>
   )

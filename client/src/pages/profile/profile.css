@@ -67,6 +67,23 @@
 /* Editted */
 .editted {
     display: flex;
+    gap: 0.5em;
+    margin-top: 1rem;
+}
+
+.resetButton {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .editInputAvatar {
@@ -79,13 +96,19 @@
     flex: 1;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
 }
 
 .editInformation {
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
 }
 
 .avatarPreview {
+    position: relative;
     margin: 2rem;
     padding: 2rem;
     border: 3px dashed rgb(183, 183, 183);
@@ -103,7 +126,7 @@
     object-fit: cover;
 }
 
-.updateAvatarButton {
+.updateProfileButton {
     color: white;
     width: 124px;
     font-size: 16px;
@@ -114,4 +137,20 @@
     background: #1877f2;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
+}
+
+.profileEditField {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    height: 32px;
+    width: 100%;
+}
+
+.profileInput {
+    width: 70%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
 }
